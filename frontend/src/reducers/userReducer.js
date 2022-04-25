@@ -2,7 +2,6 @@ import { userActionType } from "../actionTypes/userActionType"
 
 const initialState = {
     loading: false,
-    isAuthenticated: false,
     user: [],
     error: null
 }

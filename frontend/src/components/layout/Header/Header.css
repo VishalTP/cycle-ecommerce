@@ -50,6 +50,9 @@
 
 .navRight{
     width: 15%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
 }
 
 .profile > button{
@@ -68,13 +71,49 @@
     background-color: white;
     color: black;
 }
-
-.cart{
-    margin-left: 4vmax;
+.cart>svg{
+    font-size: 2rem;
+    color: white;
 }
+
+
 .navbar > div>div:last-child{
     display: flex;
 }
+
+.userOptions{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgb(233, 233, 233);
+    background-color: white;
+    
+}
+.navbar> .dropDown{
+    width: 200px;
+    position: absolute;
+    z-index: 2;
+    height: 0;
+    overflow: hidden;
+    transition: .2s linear;
+    /* display: none; */
+}
+
+.userOptions > div{
+    width: 100%;
+    padding: 1vmax 3vmax;
+    text-align: center;
+    border-bottom: 1px solid rgb(233, 233, 233);
+    cursor: pointer;
+}
+.userOptions > div:hover{
+    background-color: rgb(224, 224, 224);
+}
+.userOptions > div:active{
+    transform: scale(1.03);
+}
+
 
 @media (max-width: 600px){
     .navbar{

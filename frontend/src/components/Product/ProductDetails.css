@@ -79,8 +79,7 @@
   
   .detailsBlock3-1-1 > input {
     border: none;
-    padding: 0.5vmax;
-    width: 1vmax;
+    width: 20px;
     text-align: center;
     outline: none;
     font: 400 0.8vmax "Roboto";
@@ -92,7 +91,7 @@
     cursor: pointer;
     color: white;
     transition: all 0.5s;
-    background-color: tomato;
+    background-color: #2874f0;
     font: 500 0.7vmax "Roboto";
     border-radius: 20px;
     padding: 0.5vmax 2vmax;
@@ -101,7 +100,10 @@
   }
   
   .detailsBlock3-1 > button:last-child:hover {
-    background-color: rgb(214, 84, 61);
+    background-color: #4e87e2;
+  }
+  .detailsBlock3-1 > button:last-child:active {
+    transform: scale(1.04);
   }
   
   .detailsBlock3 > p {
@@ -126,7 +128,7 @@
  
   .submitReview {
     border: none;
-    background-color: tomato;
+    background-color: #2874f0;
     font: 500 0.7vmax "Roboto";
     border-radius: 20px;
     padding: 0.6vmax 2vmax;
@@ -137,7 +139,7 @@
     outline: none;
   }
   .submitReview:hover {
-    background-color: rgb(197, 68, 45);
+    background-color: #4e87e2;
     transform: scale(1.1);
   }
   
@@ -250,8 +252,6 @@
     }
   
     .detailsBlock3-1-1 > input {
-      padding: 1.5vmax;
-      width: 3vmax;
       font: 400 1.8vmax "Roboto";
     }
   

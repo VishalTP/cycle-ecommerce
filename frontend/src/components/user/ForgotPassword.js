@@ -3,12 +3,14 @@ import './ForgotPassword.css'
 import Loader from '../loader/Loader'
 import { useDispatch, useSelector } from "react-redux"
 import { clearError, forgotPassword } from "../../actions/userAction"
+import {useNavigate} from "react-router-dom"
 
-import { Alert, Stack } from '@mui/material';
+// import { Alert, Stack } from '@mui/material';
 
 const ForgotPassword = () => {
 
     const dispatch = useDispatch()
+    const navigate = useNavigate()
     const { error, message, loading } = useSelector(state => state.forgotPassword)
     const [email, setEmail] = useState("")
 
@@ -30,7 +32,7 @@ const ForgotPassword = () => {
         }
         if (message) {
             // alert - message
-            // navigate("/login")
+            navigate("/login")
         }
     }, [error, message, dispatch])
 

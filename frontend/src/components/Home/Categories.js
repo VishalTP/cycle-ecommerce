@@ -20,7 +20,7 @@ const Categories = () => {
         <div className="categories">
             {
                 options.map((option, i) =>
-                    <Link className="categorieCard" key={i} to={`products/${option.categorie}`}>
+                    <Link className="categorieCard" key={i} to={`products/category=${option.categorie}`}>
                         <div className="image">
                             <img src={option.img} alt={option.name} />
                         </div>

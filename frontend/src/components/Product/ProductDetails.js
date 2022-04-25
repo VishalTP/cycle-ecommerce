@@ -7,6 +7,8 @@ import { useParams } from "react-router-dom"
 import ReactStars from 'react-rating-stars-component'
 import ReviewCard from './ReviewCard.js'
 import Loader from '../loader/Loader'
+import { addItemsToCart } from '../../actions/cartAction'
+import { Alert, Stack } from '@mui/material';
 
 // 06:03-
 
@@ -25,6 +27,15 @@ const ProductDetails = () => {
         setQuantity(qty=>qty-1)
     }
 
+    const [addedToCart, setAddedToCart] = useState(false)
+    const addToCartHandler =()=>{
+        dispatch(addItemsToCart(id, quantity))
+        setAddedToCart(true)
+        setTimeout(()=>{
+            setAddedToCart(false)
+        }, 1000)
+    }
+
     useEffect(() => {
         dispatch(getProductDetails(id))
         window.scroll(0,0)
@@ -38,15 +49,19 @@ const ProductDetails = () => {
         color: "rgba(20,20,20,.1)",
         size: window.innerWidth < 600 ? 20 : 25
     }
-    console.log(options.value)
 
     return (
         loading? <Loader />
         : 
         <>
+            {
+                addedToCart && 
+                    <Stack sx={{position:"absolute",left:"0",top:"0", width: '50vmax', justifyContent: "center", }} spacing={2}>
+                        <Alert severity="success">Item Added to Cart</Alert>
+                    </Stack>
+            }
             <div className="productDetails">
-                <div>
-                    <Carousel>
+                    <Carousel sx={{textAlign:"center"}}>
                         {
                             product.images && product.images.map((item, i) => (
                                 <img
@@ -54,12 +69,10 @@ const ProductDetails = () => {
                                     key={i}
                                     src={item.url}
                                     alt={`Slide ${i}`}
-                                // width="100%"
                                 />
                             ))
                         }
                     </Carousel>
-                </div>
 
                 <div>
                     <div className="detailsBlock1">
@@ -80,7 +93,7 @@ const ProductDetails = () => {
                                 <input type="number" readOnly value={quantity} />
                                 <button onClick={increaseQuantity} disabled={quantity>=product.stock}>+</button>
                             </div>
-                            <button>Add to Cart</button>
+                            <button onClick={addToCartHandler} disabled={product.stock<1}>Add to Cart</button>
                         </div>
                         <p>
                             Status: <b className={product.stock < 1 ? "redColor" : "greenColor"}>
@@ -89,7 +102,7 @@ const ProductDetails = () => {
                         </p>
                     </div>
                     <div className="detailsBlock4">
-                        Desvription : <p>{product.description}</p>
+                        Description : <p>{product.description}</p>
                     </div>
                     <button className="submitReview">Submit Review</button>
                 </div>
@@ -100,7 +113,7 @@ const ProductDetails = () => {
                 product.reviews && product.reviews[0] ? (
                     <div className="reviews">
                         {
-                        product.reviews.map(review=><ReviewCard review={review}/>)
+                        product.reviews.map((review, i)=><ReviewCard key={i}review={review}/>)
                         }
                     </div>
                 ): <p className="noReviews">No Reviews Yet</p>

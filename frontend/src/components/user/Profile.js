@@ -25,7 +25,7 @@ const Profile = () => {
                     <div className="profileContainer">
                         <div>
                             <h1>My Profile</h1>
-                            <img src={user.avatar.url} alt={user.name} />
+                            {user.avatar && <img src={user.avatar.url} alt={user.name} />}
                             <Link to="/update">Edit Profile</Link>
                         </div>
                         <div>

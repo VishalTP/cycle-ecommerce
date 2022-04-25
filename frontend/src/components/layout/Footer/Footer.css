@@ -40,7 +40,7 @@
 .midFooter > h1 {
     font-size: 4vmax;
     font-family: "Roboto";
-    color: #eb4034;
+    color: #2874f0;
 }
 .midFooter > p {
     max-width: 60%;
@@ -71,5 +71,5 @@
 }
   
 .rightFooter > a:hover {
-    color: #eb4034;
+    color: #2874f0;
 }

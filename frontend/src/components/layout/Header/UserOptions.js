@@ -1,43 +1,47 @@
 import React from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router'
-import {logout} from '../../../actions/userAction'
+import { logout } from '../../../actions/userAction'
 import './Header.css'
 
-const UserOptions = ({user}) => {
+const UserOptions = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
-    
-    const options = [
-        {icon : "OrderIcon", name: "Orders", func : orders },
-        {icon : "AccountIcon", name: "Profile", func : account },
-        {icon : "LogOutIcon", name: "Log Out", func : logoutUser }
-    ]
-    if(user.role === "admin")
-        options.unshift({icon : "DashboardIcon", name: "Dashboard", func : dashboard })
 
-    const dashboard = ()=>{
-        navigate("/dashboard")
+    const {user} = useSelector(state=>state.user)
+
+    const options = [
+        { icon: "AccountIcon", name: "Profile", func: account },
+        { icon: "OrderIcon", name: "Orders", func: orders },
+        { icon: "LogOutIcon", name: "Log Out", func: logoutUser }
+    ]
+    if (user.role === "admin")
+        options.unshift({ icon: "DashboardIcon", name: "Dashboard", func: dashboard })
+
+    function dashboard() {
+        navigate("/admin/dashboard")
     }
 
-    const account = ()=>{
+    function account() {
         navigate("/account")
-    } 
+    }
 
-    const orders = ()=>{
+    function orders() {
         navigate("/orders")
     }
 
-    const logoutUser = ()=>{
+    function logoutUser() {
         dispatch(logout())
 
     }
 
-  return (
-    <>
-    <button onClick={logoutUser}>SignOut</button>
-    </>
-  )
+    return (
+            <div className="userOptions">
+                {
+                    options.map((item, i) => <div key={i} onClick={item.func}>{item.name}</div>)
+                }
+            </div>
+    )
 }
 
 export default UserOptions

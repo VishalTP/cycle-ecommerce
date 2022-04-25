@@ -37,8 +37,12 @@ const UpdatePassword = () => {
             }, 2000)
         }
         if (isUpdated) {
-            // alert -updated successfully
-            navigate("/account")
+            console.log(isUpdated)
+            setTimeout(() => {
+
+                dispatch({ type: userActionType.UPDATE_PASSWORD_RESET })
+                navigate("/account")
+            }, 2000)
         }
 
         dispatch({
@@ -46,15 +50,20 @@ const UpdatePassword = () => {
         })
 
     }, [error, isUpdated, dispatch])
-  return (
-    <>
+    return (
+        <>
             {
                 loading ? <Loader />
                     :
-
                     <div className="updatePasswordContainer">
+                        {
+                            isUpdated && 
+                                <Stack sx={{ position: "absolute", left: "0", top: "0", width: '50vmax', justifyContent: "center", zIndex:"10"}} spacing={2}>
+                                    <Alert severity="success">Password Updated Successfully</Alert>
+                                </Stack>
+                        }
                         <div className="updatePasswordBox">
-                            <h2 className="updatePasswordHeading"> Update Profile</h2>
+                            <h2 className="updatePasswordHeading"> Update Password</h2>
                             <form
                                 className="updatePasswordForm"
                                 onSubmit={updatePasswordSubmit}
@@ -66,8 +75,8 @@ const UpdatePassword = () => {
                                         placeholder="Old Password"
                                         required
                                         value={oldPassword}
-                                        name = "password"
-                                        onChange={e=>setOldPassword(e.target.value)}
+                                        name="password"
+                                        onChange={e => setOldPassword(e.target.value)}
                                     />
                                 </div>
 
@@ -78,8 +87,8 @@ const UpdatePassword = () => {
                                         placeholder="New Password"
                                         required
                                         value={newPassword}
-                                        name = "password"
-                                        onChange={e=>setNewPassword(e.target.value)}
+                                        name="password"
+                                        onChange={e => setNewPassword(e.target.value)}
                                     />
                                 </div>
 
@@ -90,8 +99,8 @@ const UpdatePassword = () => {
                                         placeholder="Confirm New Password"
                                         required
                                         value={confirmPassword}
-                                        name = "password"
-                                        onChange={e=>setConfirmPassword(e.target.value)}
+                                        name="password"
+                                        onChange={e => setConfirmPassword(e.target.value)}
                                     />
                                 </div>
 
@@ -106,7 +115,7 @@ const UpdatePassword = () => {
                     </div>
             }
         </>
-  )
+    )
 }
 
 export default UpdatePassword

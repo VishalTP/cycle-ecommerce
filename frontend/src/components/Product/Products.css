@@ -1,3 +1,11 @@
+.allProductsContainer{
+    min-height: 75vmin;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
 .productsHeading {
     margin: 2vmax auto;
     width: 15vw;
@@ -33,4 +41,13 @@
   position: absolute;
   top : 10vmax;
   left : 4vmax;
+}
+
+.linkClass{
+    padding: 10px;
+    border: 1px solid gray;
+}
+
+.activeClass{
+    background-color: lightblue;
 }

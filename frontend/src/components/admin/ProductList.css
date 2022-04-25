@@ -1,0 +1,65 @@
+.allProductsPage {
+    width: 100vw;
+    max-width: 100%;
+    padding: 0 7vmax;
+    box-sizing: border-box;
+    background-color: rgb(235, 235, 235);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    color: rgba(0, 0, 0, 0.678);
+}
+  
+.allProductsHeading {
+    text-align: center;
+    /* font: 400 1.2vmax "Roboto"; */
+    padding: 0.5vmax;
+    box-sizing: border-box;
+    color: rgb(255, 255, 255);
+    transition: all 0.5s;
+    background-color: rgb(44, 44, 44);
+}
+  
+.tableHeadingAdmin, .tableRowAdmin{
+    display: flex;
+    /* flex-direction: row; */
+}
+.tableHeadingAdmin > div, .tableRowAdmin > div{
+    flex: 1;
+    padding: 1vmax;
+}
+.tableHeadingAdmin> div:nth-child(1), .tableRowAdmin> div:nth-child(1){
+    flex:2;
+}
+.tableRowAdmin> div:last-child{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.allProductsTable {
+    background-color: white;
+}
+  
+.allProductsTable div {
+    font: 300 1vmax "Roboto";
+    
+    border: none;
+}
+  
+.allProductsTable a {
+    color: rgba(0, 0, 0, 0.527);
+    transition: all 0.5s;
+}
+  
+.allProductsTable a {
+    text-decoration: none;
+}
+  
+.green{
+    color: green;
+}
+.red{
+    color: red;
+}
+
+ 

@@ -8,16 +8,16 @@ const Footer = () => {
     <div id="footer">
         <div className="leftFooter">
         <h4>DOWNLOAD OUR APP</h4>
-        <p>Download App for Android and IOS mobile phone</p>
+        <p>from</p>
         <img src={playStore} alt="playstore" />
         <img src={appStore} alt="Appstore" />
       </div>
 
       <div className="midFooter">
-        <h1>ECOMMERCE.</h1>
-        <p>High Quality is our first priority</p>
+        <h1>CYCLE STORE</h1>
+        <p>Shop Here for Quality Cycles</p>
 
-        <p>Copyrights 2021 &copy; MeAbhiSingh</p>
+        <p>Copyrights 2022 &copy; VishalTP</p>
       </div>
 
       <div className="rightFooter">

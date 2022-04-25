@@ -4,12 +4,13 @@ import Loader from '../loader/Loader'
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from "react-redux"
 import { login, register, clearError } from "../../actions/userAction"
-import { useNavigate } from 'react-router'
+import { useNavigate, useLocation } from 'react-router'
 
 import { Alert, Stack } from '@mui/material';
 
 const LoginSignUp = () => {
     const dispatch = useDispatch()
+    const location = useLocation();
     const { loading, isAuthenticated, error } = useSelector(state => state.user)
 
     const navigate = useNavigate()
@@ -54,12 +55,14 @@ const LoginSignUp = () => {
 
             registerTab.current.classList.remove("shiftToNeutral")
             loginTab.current.classList.remove("shiftToLeft")
+            loginTab.current.style.display="flex"
         } else if (tab === "register") {
             switcherTab.current.classList.add("shiftToRight")
             switcherTab.current.classList.remove("shiftToNeutral")
 
             registerTab.current.classList.add("shiftToNeutral")
             loginTab.current.classList.add("shiftToLeft")
+            loginTab.current.style.display="none"
         }
 
     }
@@ -78,7 +81,7 @@ const LoginSignUp = () => {
         myForm.set("avatar", avatar)
         dispatch(register(myForm))
     }
-
+    const redirect = location.search ? location.search.split("=")[1]: "account"
     useEffect(() => {
         if (error) {
             setTimeout(() => {
@@ -86,7 +89,7 @@ const LoginSignUp = () => {
             }, 2000)
         }
         if(isAuthenticated)
-            navigate("/account")
+            navigate(`/${redirect}`)
 
     }, [error, isAuthenticated])
 
@@ -97,7 +100,7 @@ const LoginSignUp = () => {
                 loading ? <Loader />
                     :
                     <div className="loginSignUpContainer">
-                        {error && <Stack sx={{ width: '50vmax', justifyContent: "center", }} spacing={2}>
+                        {error && <Stack sx={{position:"absolute",left:"0",top:"0", width: '50vmax', justifyContent: "center", }} spacing={2}>
                             <Alert severity="warning">{error}</Alert>
                         </Stack>}
                         <div className="loginSignUpBox">
